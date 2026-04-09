@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Place an order with Ravenous by Rachelle. Bespoke cakes, pastries, and artisan baked goods across Barbados.">
+<title>Order: Ravenous by Rachelle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#080808;--black-2:#0f0f0f;--black-3:#171717;--black-4:#1e1e1e;
+  --pink:#e8a0b4;--pink-light:#f5cdd9;--pink-deep:#c4728a;
+  --gold:#c9a96e;--gold-light:#e8d5b0;
+  --white:#fdfaf8;
+  --text-primary:#fdfaf8;--text-secondary:rgba(253,250,248,0.82);
+  --text-muted:rgba(253,250,248,0.58);--text-faint:rgba(253,250,248,0.35);
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--black);color:var(--text-primary);font-family:var(--sans);font-weight:300;overflow-x:hidden;font-size:16px}
+a{text-decoration:none;color:inherit}
+img{display:block}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem clamp(1.5rem,5vw,4rem);transition:background .4s,box-shadow .4s;background:transparent}
+nav.solid{background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(232,160,180,0.15)}
+.nav-logo{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.nav-logo img{height:36px;width:auto;object-fit:contain}
+.nav-logo-text{font-family:var(--serif);font-size:clamp(.85rem,2vw,1rem);letter-spacing:.22em;text-transform:uppercase;color:var(--text-primary);font-weight:300}
+.nav-logo-text em{color:var(--pink);font-style:normal}
+.nav-links{display:flex;gap:clamp(1.5rem,3vw,2.5rem);list-style:none}
+.nav-links a{font-family:var(--sans);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary);transition:color .3s;font-weight:400}
+.nav-links a:hover,.nav-links a.active{color:var(--pink)}
+.nav-toggle{display:none;background:none;border:none;width:28px;height:20px;flex-direction:column;justify-content:space-between;padding:0;cursor:pointer}
+.nav-toggle span{display:block;height:1px;background:var(--white);transition:transform .35s var(--ease),opacity .35s;transform-origin:left center}
+.nav-toggle.open span:nth-child(1){transform:rotate(38deg) scaleX(1.05)}
+.nav-toggle.open span:nth-child(2){opacity:0;transform:translateX(8px)}
+.nav-toggle.open span:nth-child(3){transform:rotate(-38deg) scaleX(1.05)}
+@media(max-width:680px){
+  .nav-links{position:fixed;inset:0;background:rgba(8,8,8,.97);flex-direction:column;gap:0;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s var(--ease);z-index:99}
+  .nav-links.open{opacity:1;pointer-events:all}
+  .nav-links a{font-size:1.05rem;letter-spacing:.3em;padding:1.25rem 0;display:block}
+  .nav-toggle{display:flex;z-index:101;position:relative}
+}
+
+.page-hero{padding:clamp(5rem,10vw,8rem) clamp(1.5rem,5vw,4rem) clamp(3rem,5vw,4rem);position:relative;overflow:hidden;background:var(--black-2);border-bottom:1px solid rgba(232,160,180,.1)}
+.page-hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 55% at 70% 30%,rgba(196,114,138,.14) 0%,transparent 60%)}
+.page-hero-inner{position:relative;z-index:1;max-width:640px}
+.eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.1rem}
+.eyebrow-bar{width:32px;height:1px;background:var(--pink);flex-shrink:0}
+.eyebrow-text{font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--pink);font-weight:400}
+.page-hero-heading{font-family:var(--serif);font-size:clamp(3rem,7vw,6rem);font-weight:300;line-height:.95;color:var(--text-primary);margin-bottom:1.25rem;letter-spacing:-.01em}
+.page-hero-heading em{color:var(--pink-light);font-style:italic}
+.page-hero-sub{font-size:clamp(.9rem,2vw,1rem);line-height:1.85;color:var(--text-secondary);letter-spacing:.02em}
+
+.form-section{padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);background:var(--black)}
+.form-wrap{max-width:800px}
+
+/* AUDIENCE */
+.audience-toggle{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(232,160,180,.08);margin-bottom:clamp(2.5rem,5vw,4rem)}
+.audience-btn{background:var(--black-2);padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;cursor:pointer;border:none;transition:background .35s;-webkit-tap-highlight-color:transparent;position:relative}
+.audience-btn:hover{background:var(--black-3)}
+.audience-btn.active{background:var(--black-3)}
+.audience-btn.active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--pink)}
+.audience-icon{fill:var(--pink);opacity:.65;transition:opacity .35s;width:clamp(24px,4vw,32px);height:clamp(24px,4vw,32px)}
+.audience-btn.active .audience-icon,.audience-btn:hover .audience-icon{opacity:1}
+.audience-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);transition:color .35s}
+.audience-btn.active .audience-label{color:var(--pink-light)}
+
+.form-block{margin-bottom:2.5rem}
+.form-block-title{font-family:var(--serif);font-size:1.25rem;font-weight:300;color:var(--text-primary);margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid rgba(232,160,180,.12)}
+.form-block-title em{color:var(--pink-light);font-style:italic}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media(max-width:560px){.form-row{grid-template-columns:1fr}}
+.form-group{margin-bottom:1.25rem}
+.form-group:last-child{margin-bottom:0}
+
+.form-label{display:block;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(232,160,180,.65);margin-bottom:.55rem;font-weight:400}
+.optional{color:var(--text-faint);letter-spacing:.08em;text-transform:none;font-size:.58rem;margin-left:.4rem}
+
+.form-input,.form-select,.form-textarea{width:100%;background:rgba(255,255,255,.03);border:none;border-bottom:1px solid rgba(232,160,180,.22);padding:.8rem 0;font-family:var(--sans);font-size:.9rem;font-weight:300;color:var(--text-primary);outline:none;transition:border-color .3s;letter-spacing:.03em;border-radius:0;-webkit-appearance:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-bottom-color:var(--pink)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text-faint);font-size:.85rem}
+.form-select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(232,160,180,0.5)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .25rem center;padding-right:1.5rem;background-color:transparent}
+.form-select option{background:var(--black-2);color:var(--text-primary)}
+.form-textarea{resize:vertical;min-height:100px;padding:.8rem 0;line-height:1.7}
+
+/* ORDER TYPE CARDS */
+.order-type-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(232,160,180,.08);margin-bottom:1.5rem}
+@media(max-width:500px){.order-type-grid{grid-template-columns:1fr}}
+.order-type-card{position:relative}
+.order-type-card input[type="radio"]{position:absolute;opacity:0;pointer-events:none}
+.order-type-card label{
+  display:flex;flex-direction:column;gap:.4rem;
+  padding:1.25rem 1.25rem 1.1rem;
+  background:var(--black-2);cursor:pointer;
+  transition:background .3s;border-bottom:2px solid transparent;
+  height:100%;
+}
+.order-type-card label:hover{background:var(--black-3)}
+.order-type-card input:checked + label{background:var(--black-3);border-bottom-color:var(--pink)}
+.otc-badge{display:inline-block;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;padding:.22rem .6rem;border:1px solid;margin-bottom:.2rem;width:fit-content}
+.otc-badge.custom{color:var(--gold);border-color:rgba(201,169,110,.35)}
+.otc-badge.standard{color:var(--pink);border-color:rgba(232,160,180,.35)}
+.otc-name{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--text-primary);line-height:1.2}
+.order-type-card input:checked + label .otc-name{color:var(--pink-light)}
+.otc-desc{font-size:.72rem;color:var(--text-muted);line-height:1.6;letter-spacing:.02em}
+
+/* ADAPTIVE DETAILS PANEL */
+.order-details-panel{
+  display:none;
+  background:rgba(232,160,180,.04);
+  border:1px solid rgba(232,160,180,.1);
+  padding:clamp(1.5rem,3vw,2rem);
+  margin-bottom:1.5rem;
+  animation:panel-in .4s var(--ease) both;
+}
+.order-details-panel.show{display:block}
+@keyframes panel-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.panel-title{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--pink);margin-bottom:1.25rem;font-weight:400}
+
+/* EXTRAS */
+.extras-toggle-wrap{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(232,160,180,.1)}
+.extras-toggle-btn{
+  display:flex;align-items:center;gap:.75rem;
+  background:none;border:1px solid rgba(232,160,180,.22);
+  padding:.75rem 1.25rem;cursor:pointer;
+  font-family:var(--sans);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-muted);transition:border-color .3s,color .3s;
+  -webkit-tap-highlight-color:transparent;
+}
+.extras-toggle-btn:hover{border-color:var(--pink);color:var(--pink-light)}
+.extras-toggle-btn.active{border-color:var(--pink);color:var(--pink-light)}
+.extras-toggle-btn svg{width:14px;height:14px;transition:transform .35s var(--ease)}
+.extras-toggle-btn.active svg{transform:rotate(45deg)}
+
+.extras-panel{display:none;margin-top:1.5rem}
+.extras-panel.show{display:block}
+.extra-item{background:rgba(232,160,180,.03);border:1px solid rgba(232,160,180,.1);padding:1.25rem;margin-bottom:.75rem;position:relative}
+.extra-item-title{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pink);margin-bottom:1rem;font-weight:400}
+.extra-remove{position:absolute;top:.75rem;right:.75rem;background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:1rem;line-height:1;padding:.25rem;transition:color .2s}
+.extra-remove:hover{color:var(--pink)}
+.add-extra-btn{display:flex;align-items:center;gap:.6rem;background:none;border:1px dashed rgba(232,160,180,.2);padding:.75rem 1rem;cursor:pointer;font-family:var(--sans);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint);transition:border-color .3s,color .3s;width:100%;justify-content:center;-webkit-tap-highlight-color:transparent}
+.add-extra-btn:hover{border-color:rgba(232,160,180,.4);color:var(--pink-light)}
+.add-extra-btn svg{width:14px;height:14px}
+
+/* CHECKBOXES */
+.checkbox-group{display:flex;flex-wrap:wrap;gap:.75rem .5rem;margin-top:.3rem}
+.checkbox-item{display:flex;align-items:center;gap:.5rem;cursor:pointer}
+.checkbox-item input[type="checkbox"]{width:16px;height:16px;border:1px solid rgba(232,160,180,.3);background:transparent;appearance:none;-webkit-appearance:none;cursor:pointer;transition:background .2s,border-color .2s;flex-shrink:0;position:relative;border-radius:0}
+.checkbox-item input[type="checkbox"]:checked{background:var(--pink);border-color:var(--pink)}
+.checkbox-item input[type="checkbox"]:checked::after{content:'';position:absolute;top:2px;left:5px;width:4px;height:8px;border:1.5px solid var(--black);border-top:none;border-left:none;transform:rotate(45deg)}
+.checkbox-item label{font-size:.82rem;color:var(--text-muted);cursor:pointer;transition:color .2s}
+.checkbox-item input:checked + label{color:var(--text-primary)}
+
+/* PAYMENT RADIO CARDS */
+.radio-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(232,160,180,.08)}
+@media(max-width:480px){.radio-cards{grid-template-columns:1fr}}
+.radio-card{position:relative}
+.radio-card input[type="radio"]{position:absolute;opacity:0;pointer-events:none}
+.radio-card label{display:flex;flex-direction:column;align-items:center;gap:.6rem;padding:1.25rem 1rem;background:var(--black-2);cursor:pointer;transition:background .3s;text-align:center;border-bottom:2px solid transparent}
+.radio-card label:hover{background:var(--black-3)}
+.radio-card input:checked + label{background:var(--black-3);border-bottom-color:var(--pink)}
+.radio-icon{color:var(--pink);opacity:.65;transition:opacity .3s}
+.radio-card input:checked + label .radio-icon{opacity:1}
+.radio-card-name{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);transition:color .3s}
+.radio-card input:checked + label .radio-card-name{color:var(--pink-light)}
+.radio-card-desc{font-size:.62rem;color:var(--text-faint);line-height:1.4}
+
+/* RUSH WARNING */
+.rush-warning{display:none;background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.28);padding:1rem 1.25rem;margin-top:.75rem}
+.rush-warning.show{display:block}
+.rush-warning p{font-size:.82rem;line-height:1.75;color:var(--gold-light);letter-spacing:.02em}
+
+/* CONDITIONAL */
+.cond{display:none}
+.cond.show{display:block}
+
+/* PROMO */
+.promo-row{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:flex-end}
+.promo-apply{font-family:var(--sans);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--black);background:var(--pink-light);border:none;padding:.8rem 1.25rem;cursor:pointer;white-space:nowrap;transition:background .3s}
+.promo-apply:hover{background:var(--white)}
+.promo-feedback{font-size:.75rem;margin-top:.5rem;line-height:1.5}
+.promo-feedback.valid{color:#7ecba1}
+.promo-feedback.invalid{color:#e89090}
+
+/* SUBMIT */
+.form-submit{width:100%;display:flex;align-items:center;justify-content:center;gap:1rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500;color:var(--black);background:var(--pink-light);padding:1.2rem 2.5rem;border:none;cursor:pointer;transition:background .3s,transform .35s var(--ease),box-shadow .35s,opacity .3s;-webkit-tap-highlight-color:transparent;margin-top:2rem}
+.form-submit:hover:not(:disabled){background:var(--white);transform:translateY(-2px);box-shadow:0 20px 60px -10px rgba(232,160,180,.35)}
+.form-submit:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.form-submit svg{width:14px;height:14px;flex-shrink:0}
+.form-legal{font-size:.68rem;color:var(--text-faint);line-height:1.75;margin-top:1rem;letter-spacing:.02em}
+
+/* SUCCESS */
+.form-success{display:none;text-align:center;padding:clamp(3rem,6vw,5rem) 2rem}
+.form-success.show{display:block}
+.success-icon{width:64px;height:64px;border-radius:50%;border:1px solid rgba(232,160,180,.35);display:flex;align-items:center;justify-content:center;margin:0 auto 2rem}
+.success-icon svg{width:26px;height:26px;color:var(--pink)}
+.success-heading{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--text-primary);margin-bottom:1rem}
+.success-heading em{color:var(--pink-light);font-style:italic}
+.success-body{font-size:.95rem;line-height:1.9;color:var(--text-secondary);max-width:460px;margin:0 auto 2.5rem}
+.success-links{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:.85rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500;color:var(--black);background:var(--pink-light);padding:1.1rem 2.5rem;border:none;cursor:pointer;transition:background .3s,transform .35s var(--ease);-webkit-tap-highlight-color:transparent;white-space:nowrap}
+.btn-primary:hover{background:var(--white);transform:translateY(-3px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.85rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;font-weight:400;color:var(--text-secondary);border:1px solid rgba(253,250,248,.28);padding:1.1rem 2.2rem;cursor:pointer;background:none;transition:border-color .3s,color .3s,transform .35s var(--ease);-webkit-tap-highlight-color:transparent;white-space:nowrap}
+.btn-ghost:hover{border-color:var(--pink);color:var(--pink-light);transform:translateY(-3px)}
+
+footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.1);padding:clamp(2rem,4vw,3rem) clamp(1.5rem,5vw,4rem)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(232,160,180,.08)}
+.footer-brand{display:flex;align-items:center;gap:.85rem}
+.footer-brand img{height:32px;width:auto;object-fit:contain}
+.footer-logo-text{font-family:var(--serif);font-size:clamp(.9rem,2vw,1rem);letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary);font-weight:300;display:block;margin-bottom:.3rem}
+.footer-logo-text em{color:var(--pink);font-style:normal}
+.footer-tagline{font-size:.75rem;color:var(--text-faint);letter-spacing:.06em;line-height:1.7;max-width:260px}
+.f-socials{display:flex;gap:1.25rem;align-items:center}
+.f-socials a{color:var(--text-faint);transition:color .3s;display:flex;align-items:center}
+.f-socials a:hover{color:var(--pink)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-copy{font-size:.7rem;letter-spacing:.08em;color:var(--text-faint)}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="nav-logo" href="/ravenousbyrachelle/">
+    <img src="/ravenousbyrachelle/Logo.jpg" alt="Ravenous by Rachelle logo">
+    <span class="nav-logo-text"><em>Ravenous</em> by Rachelle</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/ravenousbyrachelle/">Home</a></li>
+    <li><a href="/ravenousbyrachelle/offerings/">Offerings</a></li>
+    <li><a href="/ravenousbyrachelle/gallery/">Gallery</a></li>
+    <li><a href="/ravenousbyrachelle/order/" class="active">Order</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-glow" aria-hidden="true"></div>
+  <div class="page-hero-inner">
+    <div class="eyebrow"><div class="eyebrow-bar"></div><span class="eyebrow-text">Place an Order</span></div>
+    <h1 class="page-hero-heading">Let's make<br>something <em>beautiful</em></h1>
+    <p class="page-hero-sub">Fill in the form and we will follow up within 24 hours to confirm your order and discuss the details. The more you tell us, the better we can serve you.</p>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="form-wrap">
+
+    <div class="form-success" id="formSuccess">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h2 class="success-heading">Thank you,<br><em>we received it</em></h2>
+      <p class="success-body">Your order request has been submitted. We will review the details and get back to you within 24 hours to confirm everything and discuss next steps. We look forward to creating something special for you.</p>
+      <div class="success-links">
+        <a href="/ravenousbyrachelle/" class="btn-primary">Back to Home</a>
+        <a href="/ravenousbyrachelle/gallery/" class="btn-ghost">View Gallery</a>
+      </div>
+    </div>
+
+    <form id="orderForm" action="https://formspree.io/f/xwvwjyop" method="POST">
+      <input type="hidden" name="_subject" value="New Order: Ravenous by Rachelle">
+      <input type="hidden" name="audience" id="hiddenAudience" value="individual">
+      <input type="hidden" name="order_type" id="hiddenOrderType" value="">
+      <input type="hidden" name="order_category" id="hiddenOrderCategory" value="">
+      <input type="hidden" name="promo_applied" id="hiddenPromo" value="none">
+
+      <!-- STEP 1: AUDIENCE -->
+      <div class="form-block">
+        <div class="form-block-title">Who is <em>ordering?</em></div>
+        <div class="audience-toggle">
+          <button type="button" class="audience-btn active" id="btnInd" onclick="setAudience('individual')">
+            <svg class="audience-icon" viewBox="0 0 512 512" aria-hidden="true"><path d="M458.159,404.216c-18.93-33.65-49.934-71.764-100.409-93.431c-28.868,20.196-63.938,32.087-101.745,32.087c-37.828,0-72.898-11.89-101.767-32.087c-50.474,21.667-81.479,59.782-100.398,93.431C28.731,448.848,48.417,512,91.842,512c43.426,0,164.164,0,164.164,0s120.726,0,164.153,0C463.583,512,483.269,448.848,458.159,404.216z"/><path d="M256.005,300.641c74.144,0,134.231-60.108,134.231-134.242v-32.158C390.236,60.108,330.149,0,256.005,0c-74.155,0-134.252,60.108-134.252,134.242V166.4C121.753,240.533,181.851,300.641,256.005,300.641z"/></svg>
+            <span class="audience-label">I am an individual</span>
+          </button>
+          <button type="button" class="audience-btn" id="btnBiz" onclick="setAudience('business')">
+            <svg class="audience-icon" viewBox="0 0 16 16" aria-hidden="true"><path clip-rule="evenodd" d="M11 1H1V15H3V11H5V15H15V9H11V1ZM5 3H3V5H5V3ZM9 3H7V5H9V3ZM7 7H9V9H7V7ZM11 11H13V13H11V11Z" fill-rule="evenodd"/></svg>
+            <span class="audience-label">I am a business</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: CONTACT -->
+      <div class="form-block">
+        <div class="form-block-title">Your <em>details</em></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="firstName">First Name</label>
+            <input class="form-input" type="text" id="firstName" name="first_name" placeholder="Jane" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lastName">Last Name</label>
+            <input class="form-input" type="text" id="lastName" name="last_name" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="whatsapp">WhatsApp Number <span class="optional">(optional)</span></label>
+          <input class="form-input" type="tel" id="whatsapp" name="whatsapp" placeholder="+1 (246) 000-0000">
+        </div>
+        <div class="form-group cond" id="fieldOrgName">
+          <label class="form-label" for="orgName">Organisation Name</label>
+          <input class="form-input" type="text" id="orgName" name="organisation_name" placeholder="e.g. The Coral Reef Hotel">
+        </div>
+      </div>
+
+      <!-- STEP 3: ORDER TYPE — INDIVIDUAL -->
+      <div class="form-block cond show" id="blockIndType">
+        <div class="form-block-title">What are you <em>ordering?</em></div>
+        <div class="order-type-grid" id="indTypeGrid">
+
+          <div class="order-type-card">
+            <input type="radio" name="ind_type_radio" id="otCelebration" value="Celebration Cake">
+            <label for="otCelebration" onclick="selectIndType('Celebration Cake','custom')">
+              <span class="otc-badge custom">Custom — 14 day minimum</span>
+              <span class="otc-name">Celebration Cake</span>
+              <span class="otc-desc">Bespoke tiered cake for weddings, birthdays, anniversaries, and any milestone worth marking.</span>
+            </label>
+          </div>
+
+          <div class="order-type-card">
+            <input type="radio" name="ind_type_radio" id="otDietary" value="Dietary Specialty Cake">
+            <label for="otDietary" onclick="selectIndType('Dietary Specialty Cake','custom')">
+              <span class="otc-badge custom">Custom — 14 day minimum</span>
+              <span class="otc-name">Dietary Specialty Cake</span>
+              <span class="otc-desc">Keto, gluten-free, vegan, or diabetic-friendly cakes crafted to the same standard as everything else.</span>
+            </label>
+          </div>
+
+          <div class="order-type-card">
+            <input type="radio" name="ind_type_radio" id="otCupcakes" value="Cupcakes">
+            <label for="otCupcakes" onclick="selectIndType('Cupcakes','standard')">
+              <span class="otc-badge standard">Standard — 72 hour minimum</span>
+              <span class="otc-name">Cupcakes</span>
+              <span class="otc-desc">Handcrafted cupcakes by the dozen. Custom flavours and decoration available.</span>
+            </label>
+          </div>
+
+          <div class="order-type-card">
+            <input type="radio" name="ind_type_radio" id="otPastry" value="Pastry Box">
+            <label for="otPastry" onclick="selectIndType('Pastry Box','standard')">
+              <span class="otc-badge standard">Standard — 72 hour minimum</span>
+              <span class="otc-name">Pastry Box</span>
+              <span class="otc-desc">Assorted pastries, brownies, tarts, and treats. Perfect for gifting or a special occasion spread.</span>
+            </label>
+          </div>
+
+        </div>
+
+        <!-- ADAPTIVE DETAILS: Celebration Cake -->
+        <div class="order-details-panel" id="panelCelebration">
+          <div class="panel-title">Celebration Cake Details</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="celebOccasion">Occasion</label>
+              <select class="form-select" id="celebOccasion" name="occasion">
+                <option value="" disabled selected>Select occasion</option>
+                <option>Wedding</option>
+                <option>Birthday</option>
+                <option>Anniversary</option>
+                <option>Baby Shower</option>
+                <option>Graduation</option>
+                <option>Engagement</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="celebTiers">Number of Tiers</label>
+              <select class="form-select" id="celebTiers" name="cake_tiers">
+                <option value="" disabled selected>Select tiers</option>
+                <option>1 tier</option>
+                <option>2 tiers</option>
+                <option>3 tiers</option>
+                <option>4 or more tiers</option>
+                <option>Not sure, advise me</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="celebGuests">Number of Guests to Feed</label>
+            <input class="form-input" type="text" id="celebGuests" name="guests" placeholder="e.g. 50 guests, or roughly 60 portions">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="celebFlavour">Flavour Preferences <span class="optional">(optional)</span></label>
+            <input class="form-input" type="text" id="celebFlavour" name="cake_flavour" placeholder="e.g. Vanilla sponge, raspberry jam, champagne buttercream">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="celebFinish">Finish / Style <span class="optional">(optional)</span></label>
+            <select class="form-select" id="celebFinish" name="cake_finish">
+              <option value="" disabled selected>Select a finish</option>
+              <option>Buttercream: smooth</option>
+              <option>Buttercream: textured</option>
+              <option>Fondant: clean</option>
+              <option>Drip glaze</option>
+              <option>Mirror glaze</option>
+              <option>Semi-naked</option>
+              <option>Not sure, advise me</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="celebDesign">Design Notes <span class="optional">(optional)</span></label>
+            <textarea class="form-textarea" id="celebDesign" name="design_notes" placeholder="Describe your vision: colours, themes, florals, gold leaf, toppers, or any details that matter to you."></textarea>
+          </div>
+          <div class="extras-toggle-wrap">
+            <button type="button" class="extras-toggle-btn" id="extrasToggleCeleb" onclick="toggleExtras('celeb')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              Add extras to this order (cupcakes, cookies, pastries)
+            </button>
+            <div class="extras-panel" id="extrasPanelCeleb">
+              <div id="extrasListCeleb"></div>
+              <button type="button" class="add-extra-btn" onclick="addExtra('celeb')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                Add another extra item
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADAPTIVE DETAILS: Dietary Specialty -->
+        <div class="order-details-panel" id="panelDietary">
+          <div class="panel-title">Dietary Specialty Cake Details</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="dietType">Dietary Requirement</label>
+              <select class="form-select" id="dietType" name="dietary_type">
+                <option value="" disabled selected>Select requirement</option>
+                <option>Keto / Sugar-Free</option>
+                <option>Gluten-Free</option>
+                <option>Vegan</option>
+                <option>Diabetic-Friendly</option>
+                <option>Multiple, specify in notes</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dietOccasion">Occasion</label>
+              <select class="form-select" id="dietOccasion" name="occasion">
+                <option value="" disabled selected>Select occasion</option>
+                <option>Birthday</option>
+                <option>Wedding</option>
+                <option>Anniversary</option>
+                <option>Everyday treat</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="dietGuests">Number of Guests to Feed</label>
+            <input class="form-input" type="text" id="dietGuests" name="guests" placeholder="e.g. 20 guests, or a cake for 2 people">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="dietFlavour">Flavour Preferences <span class="optional">(optional)</span></label>
+            <input class="form-input" type="text" id="dietFlavour" name="cake_flavour" placeholder="e.g. Almond sponge, monk fruit buttercream, strawberry">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="dietNotes">Any Other Details <span class="optional">(optional)</span></label>
+            <textarea class="form-textarea" id="dietNotes" name="dietary_notes" placeholder="Specific allergens to avoid, texture preferences, or anything else Rachelle should know."></textarea>
+          </div>
+          <div class="extras-toggle-wrap">
+            <button type="button" class="extras-toggle-btn" id="extrasToggleDiet" onclick="toggleExtras('diet')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              Add extras to this order (cupcakes, cookies, pastries)
+            </button>
+            <div class="extras-panel" id="extrasPanelDiet">
+              <div id="extrasListDiet"></div>
+              <button type="button" class="add-extra-btn" onclick="addExtra('diet')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                Add another extra item
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADAPTIVE DETAILS: Cupcakes -->
+        <div class="order-details-panel" id="panelCupcakes">
+          <div class="panel-title">Cupcake Details</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="cupcakeQty">Quantity</label>
+              <select class="form-select" id="cupcakeQty" name="cupcake_quantity">
+                <option value="" disabled selected>Select quantity</option>
+                <option>1 dozen (12)</option>
+                <option>2 dozen (24)</option>
+                <option>3 dozen (36)</option>
+                <option>4 dozen (48)</option>
+                <option>5 or more dozen</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cupcakeOccasion">Occasion <span class="optional">(optional)</span></label>
+              <select class="form-select" id="cupcakeOccasion" name="occasion">
+                <option value="" disabled selected>Select occasion</option>
+                <option>Birthday</option>
+                <option>Baby Shower</option>
+                <option>Wedding</option>
+                <option>Corporate Event</option>
+                <option>Gift</option>
+                <option>Everyday</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cupcakeFlavour">Flavour Preferences <span class="optional">(optional)</span></label>
+            <input class="form-input" type="text" id="cupcakeFlavour" name="cupcake_flavour" placeholder="e.g. Red velvet with cream cheese, or chocolate with salted caramel">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cupcakeDecor">Decoration Notes <span class="optional">(optional)</span></label>
+            <textarea class="form-textarea" id="cupcakeDecor" name="design_notes" style="min-height:75px" placeholder="Colours, themes, toppers, or any decoration preferences."></textarea>
+          </div>
+          <div class="extras-toggle-wrap">
+            <button type="button" class="extras-toggle-btn" id="extrasToggleCupcake" onclick="toggleExtras('cupcake')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              Add extras to this order (cake, cookies, pastries)
+            </button>
+            <div class="extras-panel" id="extrasPanelCupcake">
+              <div id="extrasListCupcake"></div>
+              <button type="button" class="add-extra-btn" onclick="addExtra('cupcake')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                Add another extra item
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADAPTIVE DETAILS: Pastry Box -->
+        <div class="order-details-panel" id="panelPastry">
+          <div class="panel-title">Pastry Box Details</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="pastryQty">Number of Boxes / Portions</label>
+              <input class="form-input" type="text" id="pastryQty" name="pastry_quantity" placeholder="e.g. 2 boxes of 6, or 24 mixed pieces">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pastryOccasion">Occasion <span class="optional">(optional)</span></label>
+              <select class="form-select" id="pastryOccasion" name="occasion">
+                <option value="" disabled selected>Select occasion</option>
+                <option>Gift</option>
+                <option>Birthday</option>
+                <option>Corporate Event</option>
+                <option>Baby Shower</option>
+                <option>Everyday treat</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pastryPrefs">Preferences <span class="optional">(optional)</span></label>
+            <textarea class="form-textarea" id="pastryPrefs" name="pastry_preferences" style="min-height:75px" placeholder="e.g. Prefer chocolate-based, no fruit, nut-free, or leave blank and let Rachelle surprise you."></textarea>
+          </div>
+          <div class="extras-toggle-wrap">
+            <button type="button" class="extras-toggle-btn" id="extrasTogglePastry" onclick="toggleExtras('pastry')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              Add extras to this order (cake, cupcakes, cookies)
+            </button>
+            <div class="extras-panel" id="extrasPanelPastry">
+              <div id="extrasListPastry"></div>
+              <button type="button" class="add-extra-btn" onclick="addExtra('pastry')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                Add another extra item
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: ORDER TYPE — BUSINESS -->
+      <div class="form-block cond" id="blockBizType">
+        <div class="form-block-title">What are you <em>ordering?</em></div>
+        <div class="order-type-grid">
+
+          <div class="order-type-card">
+            <input type="radio" name="biz_type_radio" id="otBizBreads" value="Artisan Breads: Weekly Supply">
+            <label for="otBizBreads" onclick="selectBizType('Artisan Breads: Weekly Supply','recurring')">
+              <span class="otc-badge standard">Recurring Supply</span>
+              <span class="otc-name">Artisan Breads</span>
+              <span class="otc-desc">Fresh loaves and rolls on a weekly or bi-weekly schedule. Same quality, every delivery.</span>
+            </label>
+          </div>
+
+          <div class="order-type-card">
+            <input type="radio" name="biz_type_radio" id="otBizPastries" value="Pastries: Weekly Supply">
+            <label for="otBizPastries" onclick="selectBizType('Pastries: Weekly Supply','recurring')">
+              <span class="otc-badge standard">Recurring Supply</span>
+              <span class="otc-name">Pastries</span>
+              <span class="otc-desc">Weekly pastry supply for cafes, hotels, spas, and offices. Volume and variety agreed upfront.</span>
+            </label>
+          </div>
+
+          <div class="order-type-card">
+            <input type="radio" name="biz_type_radio" id="otBizCorporate" value="Corporate Dessert Box">
+            <label for="otBizCorporate" onclick="selectBizType('Corporate Dessert Box','custom')">
+              <span class="otc-badge custom">One-Off: 14 day minimum</span>
+              <span class="otc-name">Corporate Dessert Box</span>
+              <span class="otc-desc">Bespoke dessert boxes for client events, board meetings, and corporate gifting. Branded packaging available.</span>
+            </label>
+          </div>
+
+          <div class="order-type-card">
+            <input type="radio" name="biz_type_radio" id="otBizEvent" value="Event Pastry Platter">
+            <label for="otBizEvent" onclick="selectBizType('Event Pastry Platter','custom')">
+              <span class="otc-badge custom">One-Off: 14 day minimum</span>
+              <span class="otc-name">Event Pastry Platter</span>
+              <span class="otc-desc">Large format platters for hotel buffets, spa retreats, staff celebrations, and private events.</span>
+            </label>
+          </div>
+
+        </div>
+
+        <!-- Business details panel (shared) -->
+        <div class="order-details-panel" id="panelBiz">
+          <div class="panel-title" id="bizPanelTitle">Order Details</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="bizQuantity">Quantity / Volume</label>
+              <input class="form-input" type="text" id="bizQuantity" name="quantity" placeholder="e.g. 48 rolls per week, or 60 dessert boxes for one event">
+            </div>
+            <div class="form-group cond" id="fieldFrequency">
+              <label class="form-label" for="bizFrequency">Supply Frequency</label>
+              <select class="form-select" id="bizFrequency" name="frequency">
+                <option value="" disabled selected>Select frequency</option>
+                <option>Weekly</option>
+                <option>Bi-weekly</option>
+                <option>Monthly</option>
+                <option>One-off only</option>
+                <option>To be discussed</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bizNotes">Additional Details <span class="optional">(optional)</span></label>
+            <textarea class="form-textarea" id="bizNotes" name="business_notes" placeholder="Dietary requirements for guests, branding preferences, delivery access, or anything else relevant."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4: DATE -->
+      <div class="form-block">
+        <div class="form-block-title">Requested <em>date</em></div>
+        <div class="form-group">
+          <label class="form-label" for="eventDate">Date Needed</label>
+          <input class="form-input" type="date" id="eventDate" name="requested_date" required>
+        </div>
+        <div class="rush-warning" id="rushWarning">
+          <p><strong>Heads up:</strong> Based on your order type and selected date, this may qualify as a rush order. Rush orders are subject to availability and may carry an additional fee. We will confirm during your consultation call before any charges are applied.</p>
+        </div>
+      </div>
+
+      <!-- STEP 5: DIETARY (global) -->
+      <div class="form-block">
+        <div class="form-block-title">Dietary <em>requirements</em></div>
+        <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:1.1rem;line-height:1.7;">Tick all that apply to this order. If you have already noted dietary requirements above, tick the same ones here so Rachelle has a complete picture.</p>
+        <div class="checkbox-group">
+          <div class="checkbox-item"><input type="checkbox" id="dNone" name="dietary[]" value="None"><label for="dNone">None</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="dGF" name="dietary[]" value="Gluten-Free"><label for="dGF">Gluten-Free</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="dKeto" name="dietary[]" value="Keto / Sugar-Free"><label for="dKeto">Keto / Sugar-Free</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="dVegan" name="dietary[]" value="Vegan"><label for="dVegan">Vegan</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="dDiabetic" name="dietary[]" value="Diabetic-Friendly"><label for="dDiabetic">Diabetic-Friendly</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="dNutFree" name="dietary[]" value="Nut-Free"><label for="dNutFree">Nut-Free</label></div>
+        </div>
+      </div>
+
+      <!-- STEP 6: PAYMENT -->
+      <div class="form-block">
+        <div class="form-block-title">Preferred <em>payment</em></div>
+        <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.7;">A 50% deposit is required to confirm all orders. Select your preferred method and we will send instructions at confirmation.</p>
+        <div class="radio-cards">
+          <div class="radio-card">
+            <input type="radio" id="payFirst" name="payment_method" value="First Pay" checked>
+            <label for="payFirst">
+              <svg class="radio-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              <span class="radio-card-name">First Pay</span>
+              <span class="radio-card-desc">Online payment link via email</span>
+            </label>
+          </div>
+          <div class="radio-card">
+            <input type="radio" id="payBank" name="payment_method" value="Bank Transfer">
+            <label for="payBank">
+              <svg class="radio-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+              <span class="radio-card-name">Bank Transfer</span>
+              <span class="radio-card-desc">Account details sent on confirmation</span>
+            </label>
+          </div>
+          <div class="radio-card">
+            <input type="radio" id="payCash" name="payment_method" value="Cash">
+            <label for="payCash">
+              <svg class="radio-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              <span class="radio-card-name">Cash</span>
+              <span class="radio-card-desc">Deposit on collection or delivery</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 7: PROMO -->
+      <div class="form-block">
+        <div class="form-block-title">Promo <em>code</em> <span style="font-family:var(--sans);font-size:.75rem;color:var(--text-faint);font-weight:300;letter-spacing:.05em">(optional)</span></div>
+        <div class="promo-row">
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label" for="promoCode">Enter Code</label>
+            <input class="form-input" type="text" id="promoCode" name="promo_code_entered" placeholder="e.g. RAVENOUS10" autocomplete="off" style="text-transform:uppercase">
+          </div>
+          <button type="button" class="promo-apply" onclick="applyPromo()">Apply</button>
+        </div>
+        <div class="promo-feedback" id="promoFeedback"></div>
+      </div>
+
+      <!-- SUBMIT -->
+      <button type="submit" class="form-submit" id="submitBtn">
+        Submit Order Request
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <p class="form-legal">By submitting this form you agree to be contacted by Ravenous by Rachelle regarding your order. A 50% deposit is required to confirm all orders. All orders are subject to availability and confirmation during consultation. Your details will not be shared with third parties.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/ravenousbyrachelle/Logo.jpg" alt="Ravenous by Rachelle">
+      <div>
+        <span class="footer-logo-text"><em>Ravenous</em> by Rachelle</span>
+        <p class="footer-tagline">Artisan bakery serving individuals and businesses across Barbados.</p>
+      </div>
+    </div>
+    <div class="f-socials">
+      <a href="https://instagram.com/ravenousbyrachelle" rel="noopener noreferrer" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://wa.me/12460000000" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Ravenous by Rachelle. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+/* NAV */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('solid', scrollY > 10); }, { passive: true });
+const toggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  toggle.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', String(open));
+  toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open'); toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Open menu');
+    document.body.style.overflow = '';
+  });
+});
+
+/* DATE MINIMUM */
+const today = new Date();
+const yyyy = today.getFullYear();
+const mm = String(today.getMonth()+1).padStart(2,'0');
+const dd = String(today.getDate()).padStart(2,'0');
+document.getElementById('eventDate').min = `${yyyy}-${mm}-${dd}`;
+
+/* AUDIENCE */
+let currentAudience = 'individual';
+let currentCategory = '';
+
+function setAudience(type) {
+  currentAudience = type;
+  document.getElementById('hiddenAudience').value = type;
+  document.getElementById('btnInd').classList.toggle('active', type === 'individual');
+  document.getElementById('btnBiz').classList.toggle('active', type === 'business');
+  document.getElementById('blockIndType').classList.toggle('show', type === 'individual');
+  document.getElementById('blockBizType').classList.toggle('show', type === 'business');
+  document.getElementById('fieldOrgName').classList.toggle('show', type === 'business');
+  hideAllPanels();
+  currentCategory = '';
+  checkRush();
+}
+
+/* ORDER TYPE — INDIVIDUAL */
+function selectIndType(typeName, category) {
+  document.getElementById('hiddenOrderType').value = typeName;
+  document.getElementById('hiddenOrderCategory').value = category;
+  currentCategory = category;
+  hideAllPanels();
+  const panelMap = {
+    'Celebration Cake': 'panelCelebration',
+    'Dietary Specialty Cake': 'panelDietary',
+    'Cupcakes': 'panelCupcakes',
+    'Pastry Box': 'panelPastry'
+  };
+  const panelId = panelMap[typeName];
+  if (panelId) document.getElementById(panelId).classList.add('show');
+  checkRush();
+}
+
+/* ORDER TYPE — BUSINESS */
+function selectBizType(typeName, category) {
+  document.getElementById('hiddenOrderType').value = typeName;
+  document.getElementById('hiddenOrderCategory').value = category;
+  currentCategory = category;
+  hideAllPanels();
+  document.getElementById('panelBiz').classList.add('show');
+  // Show frequency field only for recurring
+  document.getElementById('fieldFrequency').classList.toggle('show', category === 'recurring');
+  document.getElementById('bizPanelTitle').textContent = typeName + ' Details';
+  checkRush();
+}
+
+function hideAllPanels() {
+  document.querySelectorAll('.order-details-panel').forEach(p => p.classList.remove('show'));
+}
+
+/* EXTRAS */
+const extraCounts = { celeb:0, diet:0, cupcake:0, pastry:0 };
+
+function toggleExtras(key) {
+  const btn = document.getElementById('extrasToggle' + cap(key));
+  const panel = document.getElementById('extrasPanel' + cap(key));
+  const open = panel.classList.toggle('show');
+  btn.classList.toggle('active', open);
+  if (open && extraCounts[key] === 0) addExtra(key);
+}
+
+function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+function addExtra(key) {
+  extraCounts[key]++;
+  const n = extraCounts[key];
+  const list = document.getElementById('extrasList' + cap(key));
+  const div = document.createElement('div');
+  div.className = 'extra-item';
+  div.id = 'extra_' + key + '_' + n;
+  div.innerHTML = `
+    <div class="extra-item-title">Extra Item ${n}</div>
+    <button type="button" class="extra-remove" onclick="removeExtra('${key}',${n})" aria-label="Remove extra item ${n}">&#x2715;</button>
+    <div class="form-group">
+      <label class="form-label" for="extraType_${key}_${n}">Item Type</label>
+      <select class="form-select" id="extraType_${key}_${n}" name="extra_${n}_type">
+        <option value="" disabled selected>Select item</option>
+        <option>Cupcakes</option>
+        <option>Cookies</option>
+        <option>Brownies</option>
+        <option>Cake pops</option>
+        <option>Tarts</option>
+        <option>Macarons</option>
+        <option>Pastry box</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="extraQty_${key}_${n}">Quantity</label>
+        <input class="form-input" type="text" id="extraQty_${key}_${n}" name="extra_${n}_quantity" placeholder="e.g. 1 dozen, 24 pieces">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="extraFlavour_${key}_${n}">Flavour <span class="optional">(optional)</span></label>
+        <input class="form-input" type="text" id="extraFlavour_${key}_${n}" name="extra_${n}_flavour" placeholder="e.g. Chocolate">
+      </div>
+    </div>
+  `;
+  list.appendChild(div);
+}
+
+function removeExtra(key, n) {
+  const el = document.getElementById('extra_' + key + '_' + n);
+  if (el) el.remove();
+}
+
+/* RUSH LOGIC */
+const customTypes = ['Celebration Cake','Dietary Specialty Cake','Corporate Dessert Box','Event Pastry Platter'];
+
+function checkRush() {
+  const dateVal = document.getElementById('eventDate').value;
+  const warning = document.getElementById('rushWarning');
+  if (!dateVal || !currentCategory) { warning.classList.remove('show'); return; }
+  const diff = (new Date(dateVal) - new Date()) / (1000*60*60*24);
+  const isCustom = currentCategory === 'custom';
+  const threshold = isCustom ? 14 : 3;
+  warning.classList.toggle('show', diff >= 0 && diff < threshold);
+}
+document.getElementById('eventDate').addEventListener('change', checkRush);
+
+/* PROMO */
+const VALID_CODE = 'RAVENOUS10';
+function applyPromo() {
+  const val = document.getElementById('promoCode').value.trim().toUpperCase();
+  const fb = document.getElementById('promoFeedback');
+  if (val === VALID_CODE) {
+    document.getElementById('hiddenPromo').value = 'RAVENOUS10 applied for a 10% discount';
+    fb.textContent = 'Code accepted. A 10% discount will be applied during confirmation.';
+    fb.className = 'promo-feedback valid';
+  } else if (!val) {
+    fb.textContent = 'Please enter a code.';
+    fb.className = 'promo-feedback invalid';
+  } else {
+    fb.textContent = 'That code is not valid. Please check and try again.';
+    fb.className = 'promo-feedback invalid';
+  }
+}
+document.getElementById('promoCode').addEventListener('input', function(){ this.value = this.value.toUpperCase(); });
+document.getElementById('promoCode').addEventListener('keydown', e => { if(e.key==='Enter'){e.preventDefault();applyPromo();} });
+
+/* SUBMISSION */
+const form = document.getElementById('orderForm');
+const submitBtn = document.getElementById('submitBtn');
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error('Server error');
+    }
+  } catch(err) {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit Order Request';
+    alert('Something went wrong. Please try again or contact us directly on WhatsApp.');
+  }
+});
+
+/* URL PRE-SELECT */
+const params = new URLSearchParams(window.location.search);
+const offering = params.get('offering');
+if (offering) {
+  const bizTypes = ['breads-wholesale','corporate'];
+  if (bizTypes.includes(offering)) {
+    setAudience('business');
+    if (offering === 'corporate') { document.getElementById('otBizCorporate').checked = true; selectBizType('Corporate Dessert Box','custom'); }
+    if (offering === 'breads-wholesale') { document.getElementById('otBizBreads').checked = true; selectBizType('Artisan Breads: Weekly Supply','recurring'); }
+  } else {
+    setAudience('individual');
+    const indMap = { 'celebration':'otCelebration', 'dietary':'otDietary', 'pastries':'otCupcakes' };
+    const radioId = indMap[offering];
+    if (radioId) {
+      document.getElementById(radioId).checked = true;
+      const typeMap = { 'otCelebration':'Celebration Cake', 'otDietary':'Dietary Specialty Cake', 'otCupcakes':'Cupcakes' };
+      const catMap = { 'otCelebration':'custom', 'otDietary':'custom', 'otCupcakes':'standard' };
+      selectIndType(typeMap[radioId], catMap[radioId]);
+    }
+  }
+}
+</script>
+</body>
+</html>
