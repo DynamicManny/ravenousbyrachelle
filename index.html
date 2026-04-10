@@ -24,7 +24,6 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
 a{text-decoration:none;color:inherit}
 img{display:block}
 
-/* PROMO STRIP */
 .promo-strip{position:relative;z-index:200;background:linear-gradient(90deg,var(--pink-deep),#a05570,var(--pink-deep));background-size:200% 100%;animation:promo-shimmer 6s ease-in-out infinite;padding:.65rem clamp(1rem,4vw,3rem);display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
 @keyframes promo-shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 .promo-text{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white);font-weight:400;text-align:center}
@@ -33,7 +32,6 @@ img{display:block}
 .promo-close{position:absolute;right:clamp(1rem,3vw,2rem);top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.5);font-size:1rem;cursor:pointer;line-height:1;padding:.25rem;transition:color .2s}
 .promo-close:hover{color:var(--white)}
 
-/* NAV */
 nav{position:sticky;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem clamp(1.5rem,5vw,4rem);transition:padding .4s var(--ease),background .4s,box-shadow .4s;background:transparent}
 nav.solid{background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(232,160,180,0.1)}
 .nav-logo{display:flex;align-items:center;gap:.75rem;flex-shrink:0;text-decoration:none}
@@ -55,7 +53,6 @@ nav.solid{background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);-webkit-backdro
   .nav-toggle{display:flex;z-index:101;position:relative}
 }
 
-/* HERO */
 .hero{min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 clamp(1.5rem,5vw,4rem) clamp(4rem,8vh,6rem);overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:115%;object-fit:cover;object-position:center 30%;filter:brightness(.28) saturate(.8);will-change:transform}
@@ -87,7 +84,6 @@ nav.solid{background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);-webkit-backdro
 .scroll-bar{width:1px;height:56px;background:linear-gradient(to bottom,rgba(232,160,180,.7),transparent);animation:scroll-breathe 2.2s ease-in-out infinite}
 @keyframes scroll-breathe{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.5);opacity:.4}}
 
-/* MARQUEE */
 .marquee-wrap{overflow:hidden;border-top:1px solid rgba(232,160,180,.08);border-bottom:1px solid rgba(232,160,180,.08);background:rgba(196,114,138,.12)}
 .marquee-track{display:flex;white-space:nowrap;animation:marquee-scroll 28s linear infinite;padding:1.1rem 0}
 .marquee-track:hover{animation-play-state:paused}
@@ -95,7 +91,6 @@ nav.solid{background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);-webkit-backdro
 .marquee-sep{width:3px;height:3px;border-radius:50%;background:rgba(232,160,180,.4);flex-shrink:0}
 @keyframes marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* OFFERINGS */
 .offerings{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);background:var(--black-2)}
 .offerings-header{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:clamp(2.5rem,5vw,4rem);padding-bottom:clamp(1.5rem,3vw,2.5rem);border-bottom:1px solid rgba(232,160,180,.09)}
 @media(max-width:640px){.offerings-header{flex-direction:column;align-items:flex-start;gap:1.25rem}}
@@ -108,15 +103,7 @@ nav.solid{background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);-webkit-backdro
 @media(max-width:640px){.offerings-sub{text-align:left;max-width:100%}}
 .offerings-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(232,160,180,.07)}
 @media(max-width:500px){.offerings-grid{grid-template-columns:1fr}}
-
-/* Offering cards — staggered entrance */
-.o-card{
-  background:var(--black-2);position:relative;overflow:hidden;
-  transition:background .45s;display:block;color:inherit;
-  -webkit-tap-highlight-color:transparent;
-  opacity:0;transform:translateY(28px) scale(.98);
-  transition:opacity .8s var(--ease),transform .8s var(--ease),background .45s;
-}
+.o-card{background:var(--black-2);position:relative;overflow:hidden;transition:background .45s;display:block;color:inherit;-webkit-tap-highlight-color:transparent;opacity:0;transform:translateY(28px) scale(.98);transition:opacity .8s var(--ease),transform .8s var(--ease),background .45s}
 .o-card.visible{opacity:1;transform:translateY(0) scale(1)}
 .o-card:hover{background:var(--black-3)}
 .o-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(196,114,138,.07) 0%,transparent 55%);opacity:0;transition:opacity .45s;pointer-events:none}
@@ -139,21 +126,14 @@ nav.solid{background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);-webkit-backdro
 .o-card:hover .o-arrow{color:var(--pink-light);gap:1rem}
 .o-arrow svg{width:12px;height:12px}
 
-/* MOUSE GLOW */
 .mouse-glow{position:fixed;pointer-events:none;z-index:2;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(196,114,138,.09) 0%,transparent 70%);transform:translate(-50%,-50%);opacity:0;will-change:left,top}
 
-/* GALLERY STRIP */
 .gallery-strip{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);background:var(--black);position:relative}
 .gallery-strip-header{margin-bottom:clamp(2rem,4vw,3.5rem)}
 .gallery-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;grid-template-rows:300px 210px;gap:3px}
 @media(max-width:900px){.gallery-grid{grid-template-columns:1fr 1fr 1fr;grid-template-rows:240px 200px}}
 @media(max-width:580px){.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:200px 180px 180px}}
-.g-cell{
-  position:relative;overflow:hidden;background:var(--black-3);
-  opacity:0;transform:scale(.96);
-  transition:opacity .75s var(--ease),transform .75s var(--ease);
-  cursor:pointer;
-}
+.g-cell{position:relative;overflow:hidden;background:var(--black-3);opacity:0;transform:scale(.96);transition:opacity .75s var(--ease),transform .75s var(--ease);cursor:pointer}
 .g-cell.visible{opacity:1;transform:scale(1)}
 .g-cell.featured{grid-row:span 2}
 @media(max-width:900px){.g-cell.featured{grid-row:span 1}}
@@ -169,7 +149,6 @@ nav.solid{background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);-webkit-backdro
 @media(max-width:900px){.g-cell.hide-md{display:none}}
 .gallery-footer{display:flex;justify-content:center;margin-top:clamp(2rem,4vw,3rem)}
 
-/* TESTIMONIALS */
 .testimonials{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);background:var(--black-2);overflow:hidden;position:relative}
 .testimonials::before{content:'\201C';position:absolute;top:clamp(1rem,5vw,3rem);left:clamp(1rem,5vw,3rem);font-family:var(--serif);font-size:clamp(8rem,18vw,16rem);color:rgba(232,160,180,.04);line-height:1;pointer-events:none;user-select:none}
 .t-header{text-align:center;margin-bottom:clamp(2.5rem,5vw,4.5rem)}
@@ -177,12 +156,7 @@ nav.solid{background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);-webkit-backdro
 .t-heading em{color:var(--pink-light);font-style:italic}
 .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(232,160,180,.06)}
 @media(max-width:768px){.t-grid{grid-template-columns:1fr}}
-.t-card{
-  background:var(--black-2);padding:clamp(1.75rem,4vw,2.75rem);
-  transition:background .4s;
-  opacity:0;transform:translateY(24px);
-  transition:opacity .8s var(--ease),transform .8s var(--ease),background .4s;
-}
+.t-card{background:var(--black-2);padding:clamp(1.75rem,4vw,2.75rem);opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease),background .4s}
 .t-card.visible{opacity:1;transform:translateY(0)}
 .t-card:hover{background:var(--black-3)}
 .stars{display:flex;gap:.25rem;margin-bottom:1.25rem}
@@ -193,7 +167,6 @@ nav.solid{background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);-webkit-backdro
 .t-name{font-size:.72rem;letter-spacing:.12em;color:rgba(253,250,248,.7);font-weight:400}
 .t-occasion{font-size:.62rem;letter-spacing:.1em;color:rgba(253,250,248,.3);margin-top:.15rem}
 
-/* CTA */
 .cta{padding:clamp(5rem,10vw,9rem) clamp(1.5rem,5vw,4rem);background:var(--black);text-align:center;position:relative;overflow:hidden}
 .cta-ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:70vw;height:70vw;max-width:700px;max-height:700px;border-radius:50%;border:1px solid rgba(232,160,180,.07);pointer-events:none}
 .cta-ring::before{content:'';position:absolute;inset:22%;border-radius:50%;border:1px solid rgba(232,160,180,.04)}
@@ -206,7 +179,6 @@ nav.solid{background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);-webkit-backdro
 .cta-note a{color:rgba(232,160,180,.55);border-bottom:1px solid rgba(232,160,180,.18);padding-bottom:.1rem;transition:color .3s,border-color .3s}
 .cta-note a:hover{color:var(--pink);border-color:var(--pink)}
 
-/* FOOTER */
 footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padding:clamp(2rem,4vw,3rem) clamp(1.5rem,5vw,4rem)}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(232,160,180,.07)}
 .footer-brand{display:flex;align-items:center;gap:.85rem}
@@ -220,7 +192,6 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
 .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .footer-copy{font-size:.6rem;letter-spacing:.1em;color:rgba(253,250,248,.18)}
 
-/* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 .d1{transition-delay:.12s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}
@@ -235,7 +206,6 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
 
 <div class="mouse-glow" id="mouseGlow" aria-hidden="true"></div>
 
-<!-- PROMO STRIP -->
 <div class="promo-strip" id="promoStrip">
   <span class="promo-text">
     Launching now: use code <span class="promo-code">RAVENOUS10</span>
@@ -244,27 +214,25 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
   <button class="promo-close" aria-label="Dismiss promotion" onclick="document.getElementById('promoStrip').style.display='none'">&#x2715;</button>
 </div>
 
-<!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" href="index.html">
-    <img src="Logo.jpg" alt="Ravenous by Rachelle logo">
+  <a class="nav-logo" href="/ravenousbyrachelle/">
+    <img src="/ravenousbyrachelle/Logo.jpg" alt="Ravenous by Rachelle logo">
     <span class="nav-logo-text"><em>Ravenous</em> by Rachelle</span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="/ravenousbyrachelle/" class="active">Home</a></li>
     <li><a href="/ravenousbyrachelle/offerings/">Offerings</a></li>
     <li><a href="/ravenousbyrachelle/gallery/">Gallery</a></li>
-    <li><a href="order.html">Order</a></li>
+    <li><a href="/ravenousbyrachelle/order/">Order</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="celecake.jpg" alt="" aria-hidden="true" loading="eager" id="heroBg">
+    <img src="/ravenousbyrachelle/celecake.jpg" alt="" aria-hidden="true" loading="eager" id="heroBg">
   </div>
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-orb" aria-hidden="true"></div>
@@ -285,7 +253,7 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
     </h1>
     <p class="hero-body">From handcrafted pastries to bespoke celebration cakes for life's most meaningful moments, every creation is made with premium ingredients and zero compromise. Thoughtfully crafted options include gluten-free, keto, vegan, and diabetic-friendly treats.</p>
     <div class="hero-actions">
-      <a href="order.html" class="btn-primary">
+      <a href="/ravenousbyrachelle/order/" class="btn-primary">
         Place an Order
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -299,7 +267,6 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track">
     <span class="marquee-item">Artisan Breads <span class="marquee-sep"></span></span>
@@ -325,7 +292,6 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
   </div>
 </div>
 
-<!-- OFFERINGS -->
 <section class="offerings">
   <header class="offerings-header reveal">
     <div>
@@ -336,9 +302,9 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
   </header>
   <div class="offerings-grid" id="offeringsGrid">
 
-    <a href="order.html?offering=breads" class="o-card">
+    <a href="/ravenousbyrachelle/order/?offering=breads-wholesale" class="o-card">
       <div class="o-card-img">
-        <img src="snackbox.jpg" alt="Artisan snack box" loading="lazy">
+        <img src="/ravenousbyrachelle/snackbox.jpg" alt="Artisan snack box" loading="lazy">
       </div>
       <div class="o-card-body">
         <div class="o-num" aria-hidden="true">01</div>
@@ -349,9 +315,9 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
       </div>
     </a>
 
-    <a href="order.html?offering=celebration" class="o-card">
+    <a href="/ravenousbyrachelle/order/?offering=celebration" class="o-card">
       <div class="o-card-img">
-        <img src="birthdaycake.jpg" alt="Celebration cake" loading="lazy">
+        <img src="/ravenousbyrachelle/birthdaycake.jpg" alt="Celebration cake" loading="lazy">
       </div>
       <div class="o-card-body">
         <div class="o-num" aria-hidden="true">02</div>
@@ -362,9 +328,9 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
       </div>
     </a>
 
-    <a href="order.html?offering=dietary" class="o-card">
+    <a href="/ravenousbyrachelle/order/?offering=dietary" class="o-card">
       <div class="o-card-img">
-        <img src="cheesecake.jpg" alt="Dietary specialty cheesecake" loading="lazy">
+        <img src="/ravenousbyrachelle/cheesecake.jpg" alt="Dietary specialty cheesecake" loading="lazy">
       </div>
       <div class="o-card-body">
         <div class="o-num" aria-hidden="true">03</div>
@@ -375,9 +341,9 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
       </div>
     </a>
 
-    <a href="order.html?offering=corporate" class="o-card">
+    <a href="/ravenousbyrachelle/order/?offering=corporate" class="o-card">
       <div class="o-card-img">
-        <img src="altsnackbox.jpg" alt="Corporate dessert box" loading="lazy">
+        <img src="/ravenousbyrachelle/altsnackbox.jpg" alt="Corporate dessert box" loading="lazy">
       </div>
       <div class="o-card-body">
         <div class="o-num" aria-hidden="true">04</div>
@@ -391,7 +357,6 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
   </div>
 </section>
 
-<!-- GALLERY STRIP -->
 <section class="gallery-strip" id="galleryStrip">
   <header class="gallery-strip-header reveal">
     <div class="eyebrow"><div class="eyebrow-bar"></div><span class="eyebrow-text">The Gallery</span></div>
@@ -400,31 +365,31 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
 
   <div class="gallery-grid" id="galleryGrid">
     <div class="g-cell featured">
-      <img src="cheesecake.jpg" alt="Cheesecake" loading="lazy">
+      <img src="/ravenousbyrachelle/cheesecake.jpg" alt="Cheesecake" loading="lazy">
       <div class="g-overlay"><div class="g-label">Cheesecake</div><div class="g-cat">Dietary Specialties</div></div>
     </div>
     <div class="g-cell">
-      <img src="cupcake.jpg" alt="Cupcake" loading="lazy">
+      <img src="/ravenousbyrachelle/cupcake.jpg" alt="Cupcake" loading="lazy">
       <div class="g-overlay"><div class="g-label">Cupcake</div><div class="g-cat">Pastries</div></div>
     </div>
     <div class="g-cell">
-      <img src="pycupcake.jpg" alt="Pink and yellow cupcake" loading="lazy">
+      <img src="/ravenousbyrachelle/pycupcake.jpg" alt="Pink and yellow cupcake" loading="lazy">
       <div class="g-overlay"><div class="g-label">Pink and Yellow</div><div class="g-cat">Pastries</div></div>
     </div>
     <div class="g-cell hide-md">
-      <img src="birthdaycake.jpg" alt="Birthday cake" loading="lazy">
+      <img src="/ravenousbyrachelle/birthdaycake.jpg" alt="Birthday cake" loading="lazy">
       <div class="g-overlay"><div class="g-label">Birthday Cake</div><div class="g-cat">Celebration Cakes</div></div>
     </div>
     <div class="g-cell">
-      <img src="altcupcake.jpg" alt="Cupcake" loading="lazy">
+      <img src="/ravenousbyrachelle/altcupcake.jpg" alt="Cupcake" loading="lazy">
       <div class="g-overlay"><div class="g-label">Cupcake</div><div class="g-cat">Pastries</div></div>
     </div>
     <div class="g-cell hide-sm">
-      <img src="alt2cupcake.jpg" alt="Cupcake" loading="lazy">
+      <img src="/ravenousbyrachelle/alt2cupcake.jpg" alt="Cupcake" loading="lazy">
       <div class="g-overlay"><div class="g-label">Cupcake</div><div class="g-cat">Pastries</div></div>
     </div>
     <div class="g-cell hide-md">
-      <img src="snackbox.jpg" alt="Snack box" loading="lazy">
+      <img src="/ravenousbyrachelle/snackbox.jpg" alt="Snack box" loading="lazy">
       <div class="g-overlay"><div class="g-label">Snack Box</div><div class="g-cat">Corporate Desserts</div></div>
     </div>
   </div>
@@ -434,7 +399,6 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="testimonials">
   <header class="t-header reveal">
     <div class="eyebrow" style="justify-content:center"><div class="eyebrow-bar"></div><span class="eyebrow-text">Client Love</span></div>
@@ -459,24 +423,22 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta">
   <div class="cta-ring" aria-hidden="true"></div>
   <div class="cta-eyebrow"><div class="eyebrow-bar"></div><span class="eyebrow-text">Ready to Order</span></div>
   <h2 class="cta-heading reveal">Something<br><em>extraordinary</em><br>awaits you</h2>
   <p class="cta-sub reveal">Every Ravenous creation begins with a conversation. Tell us your occasion, your business, your vision and we will make it unforgettable.</p>
   <div class="cta-actions reveal">
-    <a href="order.html" class="btn-primary">Place an Order <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="/ravenousbyrachelle/order/" class="btn-primary">Place an Order <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <a href="/ravenousbyrachelle/gallery/" class="btn-ghost">View Gallery</a>
   </div>
   <p class="cta-note reveal">Prefer to talk first? <a href="tel:+12460000000">+1 (246) 000-0000</a> &nbsp;·&nbsp; Mon to Sat, 9am to 6pm</p>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="Logo.jpg" alt="Ravenous by Rachelle">
+      <img src="/ravenousbyrachelle/Logo.jpg" alt="Ravenous by Rachelle">
       <div>
         <span class="footer-logo-text"><em>Ravenous</em> by Rachelle</span>
         <p class="footer-tagline">Artisan bakery serving individuals and businesses across Barbados. Premium ingredients, every time.</p>
@@ -497,7 +459,6 @@ footer{background:var(--black-2);border-top:1px solid rgba(232,160,180,.08);padd
 </footer>
 
 <script>
-/* NAV */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', onScroll, { passive: true });
 const toggle = document.getElementById('navToggle');
@@ -518,7 +479,6 @@ links.querySelectorAll('a').forEach(a => {
   });
 });
 
-/* PARALLAX HERO */
 const heroBg = document.getElementById('heroBg');
 function onScroll() {
   const sy = window.scrollY;
@@ -528,13 +488,11 @@ function onScroll() {
   }
 }
 
-/* REVEAL (generic) */
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-/* STAGGERED OFFERING CARDS */
 const oCards = Array.from(document.querySelectorAll('.o-card'));
 const cardObs = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -547,7 +505,6 @@ const cardObs = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 oCards.forEach(c => cardObs.observe(c));
 
-/* STAGGERED GALLERY CELLS */
 const gCells = Array.from(document.querySelectorAll('.g-cell'));
 const cellObs = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -560,7 +517,6 @@ const cellObs = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 gCells.forEach(c => cellObs.observe(c));
 
-/* STAGGERED TESTIMONIAL CARDS */
 const tCards = Array.from(document.querySelectorAll('.t-card'));
 const tObs = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -573,7 +529,6 @@ const tObs = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 tCards.forEach(c => tObs.observe(c));
 
-/* MOUSE GLOW on gallery strip */
 const glow = document.getElementById('mouseGlow');
 const galleryStrip = document.getElementById('galleryStrip');
 let glowOn = false;
