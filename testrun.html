@@ -1,853 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NOIR Atelier</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Atelier | Fashion Mockup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --black:#090909;
-  --black2:#121212;
-  --white:#f5f5f5;
-  --muted:#9f9f9f;
-  --pink:#d6a1b2;
-  --pinkLight:#efd5dd;
-  --border:rgba(255,255,255,.08);
+  --black:#080808;--black-2:#0f0f0f;--black-3:#171717;
+  --pink:#e8a0b4;--pink-light:#f5cdd9;--pink-deep:#c4728a;
+  --gold:#c9a96e;--gold-light:#e8d5b0;
+  --white:#fdfaf8;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',sans-serif;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block}
 
-  --serif:'Cormorant Garamond', serif;
-  --sans:'Jost', sans-serif;
+/* --- NAVIGATION & PROMO --- */
+.promo-strip{position:relative;z-index:200;background:linear-gradient(90deg,var(--pink-deep),#a05570,var(--pink-deep));padding:.65rem;display:flex;align-items:center;justify-content:center;gap:1.5rem}
+.promo-text{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white);font-weight:400}
+nav{position:sticky;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem clamp(1.5rem,5vw,4rem);background:rgba(8,8,8,0.9);backdrop-filter:blur(10px)}
+.nav-logo{display:flex;align-items:center;gap:.75rem}
+.nav-logo-text{font-family:var(--serif);font-size:clamp(.8rem,2vw,.95rem);letter-spacing:.22em;text-transform:uppercase;color:var(--white)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(253,250,248,.6);transition:0.3s}
+.nav-links a:hover{color:var(--pink)}
+
+/* --- E-COMMERCE COMPONENTS --- */
+.product-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding: 120px clamp(1.5rem, 5vw, 4rem) 60px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-body{
-  background:var(--black);
-  color:var(--white);
-  font-family:var(--sans);
-  overflow-x:hidden;
+@media(max-width: 850px) { .product-grid-layout { grid-template-columns: 1fr; } }
+
+.product-image-stage { position: relative; background: var(--black-2); border: 1px solid rgba(232,160,180,0.1); overflow: hidden; }
+.product-image-stage img { width: 100%; height: auto; transition: 0.6s var(--ease); }
+.product-image-stage:hover img { transform: scale(1.03); }
+
+.product-info-panel { display: flex; flex-direction: column; justify-content: center; }
+.price-tag { font-family: var(--serif); font-size: 1.8rem; color: var(--pink); margin: 1rem 0 2rem; }
+
+/* Selector Buttons */
+.selector-group { margin-bottom: 2rem; }
+.selector-label { font-size: .6rem; text-transform: uppercase; letter-spacing: .2em; color: rgba(255,255,255,0.4); margin-bottom: .8rem; display: block; }
+.size-chips { display: flex; gap: 0.75rem; }
+.size-chip { 
+  border: 1px solid rgba(255,255,255,0.1); background: none; color: white; 
+  padding: 0.6rem 1.2rem; cursor: pointer; transition: 0.3s; font-family: var(--sans); font-size: 0.7rem;
 }
+.size-chip:hover, .size-chip.active { border-color: var(--pink); color: var(--pink); }
 
-a{
-  text-decoration:none;
-  color:inherit;
+.qty-stepper { 
+  display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.1); 
+  width: fit-content; margin-bottom: 2.5rem; 
 }
+.qty-btn { background: none; border: none; color: white; padding: 0.5rem 1rem; cursor: pointer; font-size: 1.2rem; }
+.qty-val { width: 40px; text-align: center; font-size: 0.9rem; }
 
-img{
-  width:100%;
-  display:block;
+/* Buttons */
+.btn-primary { 
+  display: inline-flex; align-items: center; justify-content: center; gap: 1rem;
+  background: var(--pink-light); color: var(--black); padding: 1.2rem 2.5rem;
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 500;
+  border: none; cursor: pointer; transition: 0.3s; width: 100%; margin-bottom: 1rem;
 }
-
-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:100;
-  padding:1.2rem 5vw;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(0,0,0,.75);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
+.btn-primary:hover { background: var(--white); transform: translateY(-2px); }
+.btn-outline { 
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.2); color: white; padding: 1.2rem 2.5rem;
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em;
+  transition: 0.3s; cursor: pointer; width: 100%;
 }
+.btn-outline:hover { background: rgba(255,255,255,0.05); }
 
-.logo{
-  font-family:var(--serif);
-  font-size:1.2rem;
-  letter-spacing:.25em;
-  text-transform:uppercase;
+/* --- CART SIDEBAR --- */
+.cart-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+  z-index: 1000; opacity: 0; pointer-events: none; transition: 0.4s;
 }
+.cart-overlay.active { opacity: 1; pointer-events: all; }
 
-.logo em{
-  color:var(--pink);
-  font-style:italic;
+.cart-sidebar {
+  position: fixed; right: -450px; top: 0; width: 100%; max-width: 400px;
+  height: 100vh; background: var(--black-2); z-index: 1001; 
+  transition: 0.5s var(--ease); padding: 2.5rem; display: flex; flex-direction: column;
 }
+.cart-sidebar.active { right: 0; }
 
-.nav-right{
-  display:flex;
-  align-items:center;
-  gap:2rem;
-}
+.cart-item { display: flex; gap: 1.5rem; margin-top: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.cart-item img { width: 80px; height: 100px; object-fit: cover; }
+.cart-item-info p { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
 
-.nav-links{
-  display:flex;
-  gap:2rem;
-  list-style:none;
-}
-
-.nav-links a{
-  font-size:.7rem;
-  text-transform:uppercase;
-  letter-spacing:.2em;
-  color:rgba(255,255,255,.7);
-}
-
-.cart{
-  border:1px solid rgba(255,255,255,.15);
-  padding:.8rem 1rem;
-  font-size:.65rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-}
-
-.hero{
-  min-height:100vh;
-  position:relative;
-  display:flex;
-  align-items:flex-end;
-  padding:0 5vw 8vh;
-  overflow:hidden;
-}
-
-.hero::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-  linear-gradient(to top, rgba(0,0,0,.95), rgba(0,0,0,.35)),
-  url('https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1600&auto=format&fit=crop');
-  background-size:cover;
-  background-position:center;
-  filter:brightness(.75);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  max-width:700px;
-}
-
-.overline{
-  font-size:.7rem;
-  letter-spacing:.4em;
-  text-transform:uppercase;
-  color:var(--pink);
-  margin-bottom:1.5rem;
-}
-
-.hero h1{
-  font-family:var(--serif);
-  font-size:clamp(4rem,9vw,8rem);
-  line-height:.92;
-  font-weight:300;
-  margin-bottom:2rem;
-}
-
-.hero h1 em{
-  color:var(--pinkLight);
-  font-style:italic;
-}
-
-.hero p{
-  max-width:500px;
-  line-height:1.9;
-  color:rgba(255,255,255,.6);
-  margin-bottom:2rem;
-}
-
-.hero-actions{
-  display:flex;
-  gap:1rem;
-  flex-wrap:wrap;
-}
-
-.btn{
-  padding:1rem 2rem;
-  text-transform:uppercase;
-  letter-spacing:.2em;
-  font-size:.7rem;
-  border:none;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.btn-primary{
-  background:var(--pinkLight);
-  color:#000;
-}
-
-.btn-primary:hover{
-  transform:translateY(-3px);
-}
-
-.btn-outline{
-  background:transparent;
-  border:1px solid rgba(255,255,255,.2);
-  color:var(--white);
-}
-
-.section{
-  padding:7rem 5vw;
-}
-
-.section-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  margin-bottom:4rem;
-  gap:2rem;
-}
-
-.section-title{
-  font-family:var(--serif);
-  font-size:clamp(2.5rem,5vw,4rem);
-  font-weight:300;
-}
-
-.section-title em{
-  color:var(--pinkLight);
-  font-style:italic;
-}
-
-.section-sub{
-  max-width:300px;
-  line-height:1.8;
-  color:rgba(255,255,255,.45);
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:2px;
-  background:var(--border);
-}
-
-@media(max-width:1000px){
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:650px){
-  .products{
-    grid-template-columns:1fr;
-  }
-
-  .section-header{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .nav-links{
-    display:none;
-  }
-}
-
-.product{
-  background:var(--black2);
-  overflow:hidden;
-  transition:.4s;
-}
-
-.product:hover{
-  background:#181818;
-}
-
-.product-image{
-  height:420px;
-  overflow:hidden;
-}
-
-.product-image img{
-  height:100%;
-  object-fit:cover;
-  transition:.5s;
-}
-
-.product:hover img{
-  transform:scale(1.05);
-}
-
-.product-body{
-  padding:2rem;
-}
-
-.product-number{
-  font-family:var(--serif);
-  font-size:3rem;
-  color:rgba(255,255,255,.08);
-  margin-bottom:1rem;
-}
-
-.product-title{
-  font-family:var(--serif);
-  font-size:2rem;
-  font-weight:300;
-  margin-bottom:1rem;
-}
-
-.product-title em{
-  color:var(--pinkLight);
-}
-
-.product-desc{
-  line-height:1.8;
-  color:rgba(255,255,255,.5);
-  margin-bottom:1.5rem;
-}
-
-.price{
-  font-size:1.2rem;
-  color:var(--pinkLight);
-  margin-bottom:1rem;
-}
-
-.stock{
-  font-size:.75rem;
-  color:#ffb4b4;
-  margin-bottom:1rem;
-  letter-spacing:.1em;
-}
-
-.sizes{
-  display:flex;
-  gap:.5rem;
-  margin-bottom:1.5rem;
-}
-
-.size{
-  width:42px;
-  height:42px;
-  border:1px solid rgba(255,255,255,.15);
-  background:none;
-  color:white;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.size:hover{
-  border-color:var(--pink);
-  color:var(--pink);
-}
-
-.product-actions{
-  display:flex;
-  gap:1rem;
-  flex-wrap:wrap;
-}
-
-.product-actions button{
-  flex:1;
-}
-
-.gallery{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:2px;
-}
-
-.gallery img{
-  height:100%;
-  object-fit:cover;
-}
-
-.gallery .large{
-  grid-row:span 2;
-}
-
-.testimonials{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:2px;
-  background:var(--border);
-}
-
-@media(max-width:850px){
-  .testimonials{
-    grid-template-columns:1fr;
-  }
-}
-
-.testimonial{
-  background:var(--black2);
-  padding:3rem;
-}
-
-.quote{
-  font-family:var(--serif);
-  font-size:1.4rem;
-  line-height:1.7;
-  margin-bottom:2rem;
-  font-style:italic;
-}
-
-.author{
-  color:rgba(255,255,255,.45);
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  font-size:.7rem;
-}
-
-.cta{
-  padding:8rem 5vw;
-  text-align:center;
-}
-
-.cta h2{
-  font-family:var(--serif);
-  font-size:clamp(3rem,7vw,6rem);
-  font-weight:300;
-  margin-bottom:1.5rem;
-}
-
-.cta h2 em{
-  color:var(--pinkLight);
-}
-
-.cta p{
-  max-width:600px;
-  margin:0 auto 2rem;
-  line-height:2;
-  color:rgba(255,255,255,.5);
-}
-
-footer{
-  padding:2rem 5vw;
-  border-top:1px solid var(--border);
-  color:rgba(255,255,255,.3);
-  font-size:.75rem;
-  letter-spacing:.1em;
-}
-
+/* Existing Utility Styles */
+.hero-title{font-family:var(--serif);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:300;line-height:.95;color:var(--white)}
+.hero-title em{color:var(--pink-light);font-style:italic}
+.eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.eyebrow-bar{width:32px;height:1px;background:var(--pink)}
+.eyebrow-text{font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:var(--pink)}
 </style>
 </head>
 <body>
 
-<nav>
-
-  <div class="logo">
-    <em>Noir</em> Atelier
-  </div>
-
-  <div class="nav-right">
-
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Shop</a></li>
-      <li><a href="#">Lookbook</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-
-    <div class="cart" id="cartCount">
-      Cart (0)
+<!-- Slide-out Cart -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span class="nav-logo-text">Your Selection (1)</span>
+        <button onclick="toggleCart()" style="background:none; border:none; color:white; cursor:pointer; font-size:0.7rem; letter-spacing:0.2em;">CLOSE</button>
+    </div>
+    
+    <div class="cart-item">
+        <img src="/ravenousbyrachelle/celecake.jpg" alt="Product">
+        <div class="cart-item-info">
+            <p style="margin-bottom:0.5rem;">Signature Silk Wrap</p>
+            <p style="color:var(--pink); margin-bottom:0.5rem;">Size: M</p>
+            <p style="opacity:0.5;">$180.00</p>
+        </div>
     </div>
 
-  </div>
+    <div style="margin-top:auto;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem; font-size:0.9rem;">
+            <span>Subtotal</span>
+            <span>$180.00</span>
+        </div>
+        <button class="btn-primary">Continue to Checkout</button>
+    </div>
+</div>
 
+<div class="promo-strip">
+  <span class="promo-text">Global Shipping Available — <strong>Complimentary</strong> on orders over $250</span>
+</div>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <span class="nav-logo-text"><em>Atelier</em> Luxe</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Collection</a></li>
+    <li><a href="#">Bespoke</a></li>
+    <li><a href="#">Stories</a></li>
+    <li><a href="javascript:void(0)" onclick="toggleCart()">Cart (1)</a></li>
+  </ul>
 </nav>
 
-<section class="hero">
-
-  <div class="hero-content">
-
-    <div class="overline">
-      Luxury Streetwear · Barbados
+<main class="product-grid-layout">
+    <!-- Left: Image Gallery Mockup -->
+    <div class="product-image-stage">
+        <img src="/ravenousbyrachelle/celecake.jpg" alt="Clothing Product">
     </div>
 
-    <h1>
-      Designed for <br>
-      modern <em>culture</em>
-    </h1>
+    <!-- Right: Purchase Panel -->
+    <div class="product-info-panel">
+        <div class="eyebrow">
+            <div class="eyebrow-bar"></div>
+            <span class="eyebrow-text">Spring / Summer Edition</span>
+        </div>
+        <h1 class="hero-title">Signature <em>Silk</em><br>Wrap Dress</h1>
+        <p class="price-tag">$180.00</p>
+        
+        <p style="font-size:0.85rem; line-height:1.8; color:rgba(255,255,255,0.6); margin-bottom:2.5rem;">
+            A masterclass in effortless elegance. This piece is cut from heavy-weight sandwashed silk, featuring hand-finished seams and an adjustable waist for a custom fit.
+        </p>
 
-    <p>
-      Premium essentials crafted with elevated fabrics,
-      oversized silhouettes, and timeless aesthetics built
-      for the next generation of fashion.
-    </p>
-
-    <div class="hero-actions">
-
-      <button class="btn btn-primary">
-        Shop Collection
-      </button>
-
-      <button class="btn btn-outline">
-        View Lookbook
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-<section class="section">
-
-  <div class="section-header">
-
-    <div>
-      <div class="overline">New Collection</div>
-
-      <h2 class="section-title">
-        Featured <em>Pieces</em>
-      </h2>
-    </div>
-
-    <div class="section-sub">
-      Elevated essentials designed with luxury materials,
-      oversized tailoring, and statement silhouettes.
-    </div>
-
-  </div>
-
-  <div class="products">
-
-    <div class="product">
-
-      <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop">
-      </div>
-
-      <div class="product-body">
-
-        <div class="product-number">01</div>
-
-        <div class="product-title">
-          Essential <em>Hoodie</em>
+        <!-- Size Selector -->
+        <div class="selector-group">
+            <span class="selector-label">Select Size</span>
+            <div class="size-chips">
+                <button class="size-chip" onclick="selectSize(this)">XS</button>
+                <button class="size-chip" onclick="selectSize(this)">S</button>
+                <button class="size-chip active" onclick="selectSize(this)">M</button>
+                <button class="size-chip" onclick="selectSize(this)">L</button>
+            </div>
         </div>
 
-        <div class="product-desc">
-          Heavyweight premium cotton hoodie with oversized fit
-          and embroidered detailing.
+        <!-- Quantity -->
+        <div class="selector-group">
+            <span class="selector-label">Quantity</span>
+            <div class="qty-stepper">
+                <button class="qty-btn" onclick="updateQty(-1)">-</button>
+                <div class="qty-val" id="qtyVal">1</div>
+                <button class="qty-btn" onclick="updateQty(1)">+</button>
+            </div>
         </div>
 
-        <div class="price">$120 USD</div>
-
-        <div class="stock">
-          Only 3 left in stock
-        </div>
-
-        <div class="sizes">
-          <button class="size">S</button>
-          <button class="size">M</button>
-          <button class="size">L</button>
-          <button class="size">XL</button>
-        </div>
-
+        <!-- Actions -->
         <div class="product-actions">
-
-          <button class="btn btn-primary add-cart">
-            Add to Cart
-          </button>
-
-          <button class="btn btn-outline">
-            Buy Now
-          </button>
-
+            <button class="btn-primary" onclick="toggleCart()">
+                Add to Bag
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+            <button class="btn-outline">Buy It Now</button>
         </div>
 
-      </div>
-
+        <p style="font-size:0.6rem; letter-spacing:0.1em; color:rgba(255,255,255,0.3); margin-top:2rem; text-transform:uppercase; text-align:center;">
+            Secure Encrypted Checkout &nbsp;•&nbsp; Free Returns
+        </p>
     </div>
-
-    <div class="product">
-
-      <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop">
-      </div>
-
-      <div class="product-body">
-
-        <div class="product-number">02</div>
-
-        <div class="product-title">
-          Signature <em>Jacket</em>
-        </div>
-
-        <div class="product-desc">
-          Tailored outerwear with minimalist detailing and
-          structured luxury construction.
-        </div>
-
-        <div class="price">$180 USD</div>
-
-        <div class="stock">
-          Limited release
-        </div>
-
-        <div class="sizes">
-          <button class="size">S</button>
-          <button class="size">M</button>
-          <button class="size">L</button>
-          <button class="size">XL</button>
-        </div>
-
-        <div class="product-actions">
-
-          <button class="btn btn-primary add-cart">
-            Add to Cart
-          </button>
-
-          <button class="btn btn-outline">
-            Buy Now
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="product">
-
-      <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop">
-      </div>
-
-      <div class="product-body">
-
-        <div class="product-number">03</div>
-
-        <div class="product-title">
-          Relaxed <em>Tee</em>
-        </div>
-
-        <div class="product-desc">
-          Soft premium cotton with oversized drape and
-          elevated streetwear fit.
-        </div>
-
-        <div class="price">$70 USD</div>
-
-        <div class="stock">
-          Best seller
-        </div>
-
-        <div class="sizes">
-          <button class="size">S</button>
-          <button class="size">M</button>
-          <button class="size">L</button>
-          <button class="size">XL</button>
-        </div>
-
-        <div class="product-actions">
-
-          <button class="btn btn-primary add-cart">
-            Add to Cart
-          </button>
-
-          <button class="btn btn-outline">
-            Buy Now
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="product">
-
-      <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop">
-      </div>
-
-      <div class="product-body">
-
-        <div class="product-number">04</div>
-
-        <div class="product-title">
-          Cargo <em>Pants</em>
-        </div>
-
-        <div class="product-desc">
-          Utility-inspired tailoring with relaxed luxury fit
-          and modern streetwear styling.
-        </div>
-
-        <div class="price">$140 USD</div>
-
-        <div class="stock">
-          New arrival
-        </div>
-
-        <div class="sizes">
-          <button class="size">S</button>
-          <button class="size">M</button>
-          <button class="size">L</button>
-          <button class="size">XL</button>
-        </div>
-
-        <div class="product-actions">
-
-          <button class="btn btn-primary add-cart">
-            Add to Cart
-          </button>
-
-          <button class="btn btn-outline">
-            Buy Now
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<section class="section">
-
-  <div class="section-header">
-
-    <div>
-      <div class="overline">Lookbook</div>
-
-      <h2 class="section-title">
-        Latest from the <em>studio</em>
-      </h2>
-    </div>
-
-  </div>
-
-  <div class="gallery">
-
-    <img class="large" src="https://images.unsplash.com/photo-1495385794356-15371f348c31?q=80&w=1200&auto=format&fit=crop">
-
-    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop">
-
-    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop">
-
-    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop">
-
-    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop">
-
-  </div>
-
-</section>
-
-<section class="section">
-
-  <div class="section-header">
-
-    <div>
-      <div class="overline">Client Reviews</div>
-
-      <h2 class="section-title">
-        Community <em>Feedback</em>
-      </h2>
-    </div>
-
-  </div>
-
-  <div class="testimonials">
-
-    <div class="testimonial">
-
-      <div class="quote">
-        “The quality exceeded expectations.
-        The fit is insane.”
-      </div>
-
-      <div class="author">
-        Jordan M.
-      </div>
-
-    </div>
-
-    <div class="testimonial">
-
-      <div class="quote">
-        “One of the cleanest brands coming out
-        of the Caribbean right now.”
-      </div>
-
-      <div class="author">
-        Alicia R.
-      </div>
-
-    </div>
-
-    <div class="testimonial">
-
-      <div class="quote">
-        “Premium packaging, fast shipping,
-        and luxury-level quality.”
-      </div>
-
-      <div class="author">
-        Marcus T.
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<section class="cta">
-
-  <div class="overline">
-    Limited Release
-  </div>
-
-  <h2>
-    Elevate your <em>wardrobe</em>
-  </h2>
-
-  <p>
-    Join the next generation of luxury streetwear with
-    elevated essentials crafted for modern culture.
-  </p>
-
-  <button class="btn btn-primary">
-    Shop the Drop
-  </button>
-
-</section>
-
-<footer>
-  © 2026 NOIR Atelier · Luxury Streetwear
-</footer>
+</main>
 
 <script>
+    // Toggle Cart Sidebar
+    function toggleCart() {
+        document.getElementById('cartSidebar').classList.toggle('active');
+        document.getElementById('cartOverlay').classList.toggle('active');
+    }
 
-let count = 0;
+    // Size Selection Logic
+    function selectSize(element) {
+        document.querySelectorAll('.size-chip').forEach(chip => chip.classList.remove('active'));
+        element.classList.add('active');
+    }
 
-document.querySelectorAll('.add-cart').forEach(btn => {
-
-  btn.addEventListener('click', () => {
-
-    count++;
-
-    document.getElementById('cartCount').innerHTML =
-      `Cart (${count})`;
-
-  });
-
-});
-
-document.querySelectorAll('.size').forEach(size => {
-
-  size.addEventListener('click', () => {
-
-    size.parentElement.querySelectorAll('.size').forEach(s => {
-      s.style.background = 'transparent';
-      s.style.borderColor = 'rgba(255,255,255,.15)';
-    });
-
-    size.style.background = '#d6a1b2';
-    size.style.color = '#000';
-    size.style.borderColor = '#d6a1b2';
-
-  });
-
-});
-
+    // Quantity Logic
+    function updateQty(change) {
+        let valEl = document.getElementById('qtyVal');
+        let current = parseInt(valEl.innerText);
+        if (current + change >= 1) {
+            valEl.innerText = current + change;
+        }
+    }
 </script>
 
 </body>
